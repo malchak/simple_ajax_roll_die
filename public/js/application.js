@@ -1,4 +1,12 @@
-$(document).ready(function () {
+$(document).ready(function() {
+	$('form').on('submit', function(e){
+		e.preventDefault();
+		$.post('/rolls')
+			.done(function(data){
+				console.log(data.roll);
+				$('#die').html('<img src='+data.roll+'.png>');
+			});
+	});
 
   // PSEUDO-CODE:
   //   1- intercept the form submission event using jQuery
