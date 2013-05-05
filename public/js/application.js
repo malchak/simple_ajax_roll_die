@@ -1,10 +1,11 @@
 $(document).ready(function() {
 	$('form').on('submit', function(e){
 		e.preventDefault();
-		$.post('/rolls')
-			.done(function(data){
+    $('#die').html('<img id="spinner" src="spinner.gif">')
+    $.post('/rolls')
+      .done(function(data){
 				console.log(data.roll);
-				$('#die').html('<img src='+data.roll+'.png>');
+				$('#spinner').replaceWith('<img src='+data.roll+'.png>');
 			});
 	});
 
